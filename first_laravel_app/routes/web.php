@@ -23,8 +23,9 @@ Route::get('/', function () {
 });
 
 // {post} - is a wildcard
-Route::get('posts/{post}', function ($slug) {
+Route::get('posts/{post:slug}', function (Post $post) {
     return view('post',[
-        'post' => Post::findOrFail($slug)
+        /* Important: the variable name should be the same as in wildcard */
+        'post' => $post 
     ]);
 });
